@@ -61,58 +61,35 @@
       <h3 class="text-3xl font-bold text-yellow-400 mb-2">Featured Books</h3>
       <p class="text-purple-300 text-sm">Browse our curated collection of great reads</p>
 
+      <div class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+        <input id="searchInput" type="text" placeholder="Search books..." class="flex-1 px-4 py-2 rounded-full bg-purple-800 text-white border border-purple-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+
+        <button id="searchBtn" class="bg-yellow-400 text-purple-950 font-bold px-6 py-2 rounded-full hover:bg-yellow-300 transition duration-300">Search</button>
+
+      </div>
+
 
     </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-6"> 
-      <div class="bg-purple-950 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 flex flex-col">
-        <img src="https://covers.openlibrary.org/b/id/11528067-L.jpg" alt="On Ne Badine Pas Avec L'Amour" class="w-full h-56 object-cover">
-
-        <div class="p-4 flex-1 flex flex-col flex-1">
-            <h4 class="text-lg font-bold text-white mb-1">On Ne Badine Pas Avec L'Amour</h4>
-            <p class="text-purple-300 text-sm mb-3">By Alfred de Musset</p>
-          <button data-id="1" class="mt-auto w-full bg-yellow-400 text-purple-950 py-2 rounded-lg hover:bg-yellow-300 transition duration-300 font-semibold">
-            ❤️ Add to Favorites
-          </button>
-        </div>  
-
-      </div>
-
-       <div class="bg-purple-950 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 flex flex-col">
-        <img src="https://covers.openlibrary.org/b/id/11528067-L.jpg" alt="On Ne Badine Pas Avec L'Amour" class="w-full h-56 object-cover">
-
-        <div class="p-4 flex-1 flex flex-col flex-1">
-            <h4 class="text-lg font-bold text-white mb-1">On Ne Badine Pas Avec L'Amour</h4>
-            <p class="text-purple-300 text-sm mb-3">By Alfred de Musset</p>
-          <button data-id="2" class="mt-auto w-full bg-yellow-400 text-purple-950 py-2 rounded-lg hover:bg-yellow-300 transition duration-300 font-semibold">
-            ❤️ Add to Favorites
-          </button>
-        </div>  
-
-      </div>
-
-       <div class="bg-purple-950 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 flex flex-col">
-        <img src="https://covers.openlibrary.org/b/id/11528067-L.jpg" alt="On Ne Badine Pas Avec L'Amour" class="w-full h-56 object-cover">
-
-        <div class="p-4 flex-1 flex flex-col flex-1">
-            <h4 class="text-lg font-bold text-white mb-1">On Ne Badine Pas Avec L'Amour</h4>
-            <p class="text-purple-300 text-sm mb-3">By Alfred de Musset</p>
-          <button data-id="3" class="mt-auto w-full bg-yellow-400 text-purple-950 py-2 rounded-lg hover:bg-yellow-300 transition duration-300 font-semibold">
-           ❤️ Add to Favorites
-          </button>
-        </div>  
-
-      </div>
+    <div id="emptyMessage" class="hidden text-center py-20">
+      <p class="text-purple-300">No books found. Please try a different search.</p>
 
     </div>
 
-    
+    <div id="booksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    </div>
+
+    <div id="loadingSpinner" class="text-center py-20">
+         <div class="inline-block w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
+              <p class="text-purple-300 mt-4">Loading books...</p>
+    </div>
    
 
   </section>
 
   <footer class="bg-purple-900 text-center py-4 mt-auto">
-    <p class="text-yellow-400 text-sm">&copy; 2024 Book Explorer. All rights reserved.</p>  
+    <p class="text-yellow-400 text-sm">&copy; 2026 Book Explorer. All rights reserved.</p>  
   </footer>
   
 
