@@ -38,3 +38,15 @@ addButtons.forEach(button => {
     }
   })
 })
+
+function restoreButton() {
+  addButtons.forEach(button => {
+    const bookId = button.getAttribute('data-id') 
+    if(isFavorite(bookId)) {
+      button.textContent = 'Added to Favorites'
+      button.classList.remove('bg-yellow-400', 'text-purple-950')
+      button.classList.add('bg-purple-500', 'text-white')
+    }
+  })
+}
+restoreButton()
