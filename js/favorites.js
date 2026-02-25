@@ -42,6 +42,19 @@ export function renderFavorites() {
   const favorites = getFavorites()
 
   if(favorites.length === 0){
+     emptyMessage.innerHTML = `
+      <p class="text-6xl mb-4">📭</p>
+      <p class="text-2xl font-bold text-yellow-400 mb-2">No favorites yet!</p>
+      <p class="text-purple-300 text-lg mb-6">
+        Go back and add some books you love.
+      </p>
+      <a href="index.html"
+         class="bg-yellow-400 text-purple-950 font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition duration-300">
+        Browse Books
+      </a>
+    `
+
+
     emptyMessage.classList.remove('hidden')
     grid.classList.add('hidden')
     return

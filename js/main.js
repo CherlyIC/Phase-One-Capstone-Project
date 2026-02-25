@@ -49,9 +49,17 @@ function createBookCard(book) {
 
 }
 
-function renderBooks(books) {
+function renderBooks(books, query = '') {
+
   loadingSpinner.classList.add('hidden')
   if(books.length === 0) {
+     emptyMessage.innerHTML = `
+      <p class="text-6xl mb-4">📭</p>
+      <p class="text-purple-300 text-lg mb-2">
+        No results found for <span class="text-yellow-400 font-bold">"${query}"</span>
+      </p>
+      <p class="text-purple-400 text-sm">Try a different search term</p>
+    `
     emptyMessage.classList.remove('hidden')
     booksGrid.classList.add('hidden')
     return
@@ -114,13 +122,20 @@ async function handleSearch() {
     loadDefaultBooks()
     return
   }
+  searchBtn.textContent = 'Searching...'
+  searchBtn.disabled = true
+  searchBtn.classList.add('opacity-70', 'cursor-not-allowed')
   
   loadingSpinner.classList.remove('hidden')
   booksGrid.classList.add('hidden')
   emptyMessage.classList.add('hidden')
 
+  searchBtn.textContent = 'Search'
+  searchBtn.disabled = false
+  searchBtn.classList.remove('opacity-70', 'cursor-not-allowed')
+
   const books = await searchBooks(query)
-  renderBooks(books)
+  renderBooks(books, query)
 }
 
 searchBtn.addEventListener('click', handleSearch)
