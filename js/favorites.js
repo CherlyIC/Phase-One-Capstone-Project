@@ -1,25 +1,24 @@
+let favorites = []
+
 export function getFavorites() {
-  return [
-    {
-      id: '1',
-      title: 'The Great Gatsby',
-      author: 'F. Scott Fitzgerald',
-      genre: 'Classic',
-      cover: 'https://covers.openlibrary.org/b/id/8739161-L.jpg'
-    },
-    {
-      id: '2',
-      title: '1984',
-      author: 'George Orwell',
-      genre: 'Dystopian',
-      cover: 'https://covers.openlibrary.org/b/id/8228691-L.jpg'
-    }
-  ]
+  return favorites
 }
 
 export function addFavorite(book) {
-  console.log('Adding to favorites:', book)
+  const existing = favorites.find(fav => fav.id === book.id)
+  if(!existing) {
+    favorites.push(book)
+    console.log('Added to favorites:', book.title)
+  } else{
+    console.log('Book already in favorites:', book.title)
+  }
+
 }
 export function removeFavorite(bookId) {
-  console.log('Removing from favorites, book ID:', bookId)
+  favorites = favorites.filter(fav => fav.id !== bookId)
+  console.log('Removed book with ID:', bookId)
+}
+
+export function isFavorite(bookId) {
+  return favorites.some(fav => fav.id === bookId)
 }
