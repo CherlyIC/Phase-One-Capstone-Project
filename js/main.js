@@ -4,6 +4,8 @@ import { addFavorite, removeFavorite, isFavorite } from './favorites.js'
 const booksGrid = document.getElementById('booksGrid')
 const loadingSpinner = document.getElementById('loadingSpinner')
 const emptyMessage = document.getElementById('emptyMessage')
+const searchInput = document.getElementById('searchInput')
+const searchBtn = document.getElementById('searchBtn')
 
 function createBookCard(book) {
   const alreadyFavorite = isFavorite(book.id)
@@ -104,3 +106,26 @@ async function loadDefaultBooks() {
 }
 
 loadDefaultBooks()
+
+
+async function handleSearch() {
+  const query = searchInput.value.trim()
+  if (query === '') {
+    loadDefaultBooks()
+    return
+  }
+  
+  loadingSpinner.classList.remove('hidden')
+  booksGrid.classList.add('hidden')
+  emptyMessage.classList.add('hidden')
+
+  const books = await searchBooks(query)
+  renderBooks(books)
+}
+
+searchBtn.addEventListener('click', handleSearch)
+searchInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    handleSearch()
+  }
+})
